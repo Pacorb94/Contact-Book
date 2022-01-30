@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "contacts")
 public class Contact implements Serializable {
