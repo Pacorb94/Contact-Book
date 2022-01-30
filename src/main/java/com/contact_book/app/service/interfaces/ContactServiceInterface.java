@@ -9,11 +9,11 @@ public interface ContactServiceInterface {
 
 	public Contact save(Contact contact);
 
-	public List<Contact> findAll();
+	public List<Contact> getAll();
 
-	public Optional<Contact> find(Long id);
+	public Optional<Contact> getContact(Long id);
 
-	public Optional<Contact> findByEmail(String email);
+	public Optional<Contact> getContactByEmail(String email);
 
 	public void delete(Long id);
 
