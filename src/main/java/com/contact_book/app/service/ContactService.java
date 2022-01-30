@@ -1,4 +1,4 @@
-package com.contact_book.app.services;
+package com.contact_book.app.service;
 
 import java.util.*;
 
@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.contact_book.app.dao.ContactRepository;
-import com.contact_book.app.models.Contact;
+import com.contact_book.app.model.Contact;
+import com.contact_book.app.repository.ContactRepository;
+import com.contact_book.app.service.interfaces.ContactServiceInterface;
 
 
 @Service
@@ -24,7 +25,7 @@ public class ContactService implements ContactServiceInterface {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Contact> getContacts() {
+	public List<Contact> getAll() {
 		return this.contactRepo.findAll();
 	}
 
@@ -36,7 +37,7 @@ public class ContactService implements ContactServiceInterface {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Contact getContactByEmail(String email) {
+	public Optional<Contact> getContactByEmail(String email) {
 		return this.contactRepo.findByEmail(email);
 	}
 
