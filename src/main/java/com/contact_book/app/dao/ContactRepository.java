@@ -16,5 +16,5 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 	
 	@Transactional
 	@Query("delete from contacts co where co.email=?1")
-	String deleteByEmail(String email);
+	void deleteByEmail(String email);
 }
