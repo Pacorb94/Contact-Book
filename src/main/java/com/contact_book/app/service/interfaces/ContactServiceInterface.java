@@ -1,19 +1,19 @@
-package com.contact_book.app.services;
+package com.contact_book.app.service.interfaces;
 
 import java.util.*;
 
-import com.contact_book.app.models.Contact;
+import com.contact_book.app.model.Contact;
 
 
 public interface ContactServiceInterface {
 
 	public Contact save(Contact contact);
 
-	public List<Contact> getContacts();
+	public List<Contact> findAll();
 
-	public Optional<Contact> getContact(Long id);
+	public Optional<Contact> find(Long id);
 
-	public Contact getContactByEmail(String email);
+	public Optional<Contact> findByEmail(String email);
 
 	public void delete(Long id);
 
