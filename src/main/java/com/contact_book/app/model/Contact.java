@@ -1,6 +1,7 @@
-package com.contact_book.app.models;
+package com.contact_book.app.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -22,6 +23,14 @@ public class Contact implements Serializable {
 
 	@Column(length = 45, nullable = false)
 	private String email;
+
+	@Column(name = "created_at", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdAt;
+
+	@Column(name = "updated_at", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedAt;
 
 	public Long getId() {
 		return id;
@@ -49,5 +58,13 @@ public class Contact implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
 	}
 }
