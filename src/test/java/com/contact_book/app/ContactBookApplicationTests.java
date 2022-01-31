@@ -1,4 +1,4 @@
-package com.curso.app;
+package com.contact_book.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

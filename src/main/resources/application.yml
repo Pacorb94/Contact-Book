@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ''
+    url: jdbc:mysql://localhost:3306/contact_book?useSSL=false&serverTimezone=Europe/Madrid
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+#Cuando se inicia la aplicación actualiza los datos sin borrarlos pero en producción ponerlo en none
+    hibernate:
+      ddl-auto: update
+    show-sql: false
