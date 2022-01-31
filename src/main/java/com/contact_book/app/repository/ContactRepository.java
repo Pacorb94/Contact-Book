@@ -15,7 +15,7 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
 
 	// Al usar findBy... ya está configurado para buscar
 	@Transactional(readOnly = true)
-	public Optional <Contact> findByEmail(String email);
+	public Optional<Contact> findByEmail(String email);
 
 	@Transactional
 	@Query("delete from Contact co where co.email = ?1")
