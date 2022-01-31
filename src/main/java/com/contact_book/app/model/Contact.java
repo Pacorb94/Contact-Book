@@ -5,6 +5,10 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+
 @Entity
 @Table(name = "contacts")
 public class Contact implements Serializable {
@@ -18,19 +22,25 @@ public class Contact implements Serializable {
 	@Column(length = 45, nullable = false)
 	private String name;
 
-	@Column(length = 10, nullable = false)
+	@Column(length = 3, nullable = false)
 	private int age;
 
-	@Column(length = 45, nullable = false)
+	@Column(length = 45, unique = true, nullable = false)
 	private String email;
 
-	@Column(name = "created_at", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
 	private Date createdAt;
 
-	@Column(name = "updated_at", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	private Date updatedAt;
+	
+	/**
+	 * Método que actualiza la propiedad updatedAt
+	 */
+	@PreUpdate
+	public void setLastUpdate() {  
+		this.updatedAt = new Date(); 
+	}
 
 	public Long getId() {
 		return id;
