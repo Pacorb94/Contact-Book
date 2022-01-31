@@ -1,6 +1,7 @@
 package com.contact_book.app.service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,12 @@ import com.contact_book.app.model.Contact;
 import com.contact_book.app.repository.ContactRepository;
 import com.contact_book.app.service.interfaces.ContactServiceInterface;
 
-
+/**
+ * Clase que separa la lógica del controlador y además esta clase sigue el
+ * patrón facade
+ * 
+ * @author UserFree
+ */
 @Service
 public class ContactService implements ContactServiceInterface {
 
@@ -20,7 +26,7 @@ public class ContactService implements ContactServiceInterface {
 	@Override
 	@Transactional
 	public Contact save(Contact contact) {
-		return this.contactRepo.save(contact);
+		return this.contactRepo.save(contact);	
 	}
 
 	@Override
@@ -31,25 +37,27 @@ public class ContactService implements ContactServiceInterface {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Contact> getContact(Long id) {
-		return this.contactRepo.findById(id);
+	public Contact getContact(Long id) {
+		Optional<Contact> opContact = this.contactRepo.findById(id);
+		if (opContact.isPresent()) {
+			return opContact.get();
+		}
+		return null;
 	}
-
+	
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Contact> getContactByEmail(String email) {
-		return this.contactRepo.findByEmail(email);
+	public Contact getContactByEmail(String email) {
+		Optional<Contact> opContact = this.contactRepo.findByEmail(email);
+		if (opContact.isPresent()) {
+			return opContact.get();
+		}
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public void delete(Long id) {
 		this.contactRepo.deleteById(id);
-	}
-
-	@Override
-	@Transactional
-	public void deleteByEmail(String email) {
-		this.contactRepo.deleteByEmail(email);
 	}
 }
