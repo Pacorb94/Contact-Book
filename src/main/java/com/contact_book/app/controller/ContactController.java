@@ -1,10 +1,10 @@
 package com.contact_book.app.controller;
 
-import java.util.*;
+import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.contact_book.app.exception.UnprocessableEntityException;
@@ -25,8 +25,8 @@ public class ContactController {
 
 	@PostMapping
 	public ResponseEntity<Contact> create(@RequestBody Contact request) throws UnprocessableEntityException {
-		this.contactValidator.validator(request);
-		return ResponseEntity.status(HttpStatus.CREATED).body(this.contactService.save(request));			
+		this.contactValidator.validator(request, null);
+		return ResponseEntity.created(null).body(this.contactService.save(request));
 	}
 
 	@GetMapping
@@ -48,9 +48,9 @@ public class ContactController {
 			@RequestBody Contact request, 
 			@PathVariable Long id
 	) throws UnprocessableEntityException {
-		this.contactValidator.validator(request);
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
+			this.contactValidator.validator(request, id);
 			BeanUtils.copyProperties(request, contact);
 			return ResponseEntity.ok(this.contactService.save(contact));
 		}
@@ -62,9 +62,7 @@ public class ContactController {
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
 			this.contactService.delete(id);
-			Map<String, Object> response = new HashMap<>();
-			response.put("message", "Deleted contact");
-			return ResponseEntity.ok(response);
+			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.notFound().build();
 	}
