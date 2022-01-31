@@ -9,14 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.contact_book.app.model.Contact;
 
+
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
-	@Transactional(readOnly = true)
 	// Al usar findBy... ya está configurado para buscar
-	Optional <Contact> findByEmail(String email);
+	@Transactional(readOnly = true)
+	public Optional <Contact> findByEmail(String email);
 
 	@Transactional
-	@Query("delete from contacts co where co.email=?1")
-	void deleteByEmail(String email);
+	@Query("delete from Contact co where co.email = ?1")
+	public void deleteByEmail(String email);
 }
