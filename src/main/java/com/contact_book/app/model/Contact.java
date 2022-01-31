@@ -33,13 +33,13 @@ public class Contact implements Serializable {
 
 	@UpdateTimestamp
 	private Date updatedAt;
-	
+
 	/**
 	 * Método que actualiza la propiedad updatedAt
 	 */
 	@PreUpdate
-	public void setLastUpdate() {  
-		this.updatedAt = new Date(); 
+	public void setLastUpdate() {
+		this.updatedAt = new Date();
 	}
 
 	public Long getId() {
@@ -47,11 +47,11 @@ public class Contact implements Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return name.trim();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 
 	public int getAge() {
@@ -63,11 +63,11 @@ public class Contact implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		return email.trim();
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.trim();
 	}
 
 	public Date getCreatedAt() {
