@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.contact_book.app.exception.UnprocessableEntityException;
 import com.contact_book.app.model.Contact;
 import com.contact_book.app.service.ContactService;
-import com.contact_book.app.validator.ContactValidator;
+import com.contact_book.app.validator.ContactRequestValidator;
 
 
 @RestController
@@ -21,11 +21,11 @@ public class ContactController {
 	private ContactService contactService;
 
 	@Autowired
-	private ContactValidator contactValidator;
+	private ContactRequestValidator contactRequestValidator;
 
 	@PostMapping
 	public ResponseEntity<Contact> create(@RequestBody Contact request) throws UnprocessableEntityException {
-		this.contactValidator.validator(request, null);
+		this.contactRequestValidator.validator(request, null);
 		return ResponseEntity.created(null).body(this.contactService.save(request));
 	}
 
@@ -50,7 +50,7 @@ public class ContactController {
 	) throws UnprocessableEntityException {
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
-			this.contactValidator.validator(request, id);
+			this.contactRequestValidator.validator(request, id);
 			BeanUtils.copyProperties(request, contact);
 			return ResponseEntity.ok(this.contactService.save(contact));
 		}
