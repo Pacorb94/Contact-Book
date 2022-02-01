@@ -16,7 +16,7 @@ import com.contact_book.app.service.ContactService;
  * @author UserFree
  */
 @Component
-public class ContactValidator {
+public class ContactRequestValidator {
 
 	@Autowired
 	private ContactService contactService;
