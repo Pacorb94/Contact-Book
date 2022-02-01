@@ -38,14 +38,6 @@ public class Contact implements Serializable {
 		
 	}
 
-	/**
-	 * Método que actualiza la propiedad updatedAt
-	 */
-	@PreUpdate
-	public void setLastUpdate() {
-		this.updatedAt = new Date();
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -80,5 +72,13 @@ public class Contact implements Serializable {
 
 	public Date getUpdatedAt() {
 		return updatedAt;
+	}
+	
+	/**
+	 * Método que actualiza la propiedad updatedAt
+	 */
+	@PreUpdate
+	public void setUpdatedAt() {
+		this.updatedAt = new Date();
 	}
 }
