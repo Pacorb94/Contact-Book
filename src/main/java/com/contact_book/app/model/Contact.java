@@ -33,6 +33,10 @@ public class Contact implements Serializable {
 
 	@UpdateTimestamp
 	private Date updatedAt;
+	
+	public Contact() {
+		
+	}
 
 	/**
 	 * Método que actualiza la propiedad updatedAt
