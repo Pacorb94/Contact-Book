@@ -30,8 +30,8 @@ public class ContactController {
 	}
 
 	@GetMapping
-	public List<Contact> getAll() {
-		return this.contactService.getAll();
+	public ResponseEntity<List<Contact>> getAll() {
+		return ResponseEntity.ok(this.contactService.getAll());
 	}
 
 	@GetMapping("/{id}")
