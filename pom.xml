@@ -8,7 +8,7 @@
 		<version>2.6.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.contact-book</groupId>
+	<groupId>com.contact_book</groupId>
 	<artifactId>Contact-Book</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Contact-Book</name>
