@@ -5,8 +5,6 @@ import java.util.List;
 /**
  * Clase que sirve de modelo para hacer una respuesta
  * de error
- * 
- * @author UserFree
  */
 @SuppressWarnings("serial")
 public class ErrorResponse extends RuntimeException {

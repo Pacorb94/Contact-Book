@@ -14,8 +14,6 @@ import com.contact_book.app.service.interfaces.ContactServiceInterface;
 /**
  * Clase que separa la lógica del controlador y además esta clase sigue el
  * patrón facade
- * 
- * @author UserFree
  */
 @Service
 public class ContactService implements ContactServiceInterface {
