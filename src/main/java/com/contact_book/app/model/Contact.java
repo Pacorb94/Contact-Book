@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 
 @Entity
 @Table(name = "contacts")
@@ -19,12 +19,19 @@ public class Contact implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotBlank(message = "Name is required")
+	@Size(min = 1, max = 45, message = "Name must be between 1 and 45 characters")
 	@Column(length = 45, nullable = false)
 	private String name;
-
+	
+	@NotNull(message = "Age is required")
+	@Min(value = 18, message = "Age should not be less than 18") 
 	@Column(length = 3, nullable = false)
 	private int age;
-
+	
+	@NotBlank(message = "Email is required")
+	@Email(message = "Wrong email")
+	@Size(max = 45, message = "Email should not be greater than 45 characters")
 	@Column(length = 45, unique = true, nullable = false)
 	private String email;
 
@@ -33,9 +40,9 @@ public class Contact implements Serializable {
 
 	@UpdateTimestamp
 	private Date updatedAt;
-	
+
 	public Contact() {
-		
+
 	}
 
 	public Long getId() {
@@ -73,7 +80,7 @@ public class Contact implements Serializable {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-	
+
 	/**
 	 * Método que actualiza la propiedad updatedAt
 	 */
