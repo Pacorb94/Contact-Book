@@ -26,7 +26,7 @@ public class ContactService implements ContactServiceInterface {
 	@Override
 	@Transactional
 	public Contact save(Contact contact) {
-		return this.contactRepo.save(contact);
+		return this.contactRepo.save(contact);	
 	}
 
 	@Override
