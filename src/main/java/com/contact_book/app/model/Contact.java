@@ -8,6 +8,8 @@ import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.contact_book.app.request.ContactRequest;
+
 
 @Entity
 @Table(name = "contacts")
@@ -36,6 +38,12 @@ public class Contact implements Serializable {
 
 	public Contact() {
 
+	}
+	
+	public void setAllProperties(ContactRequest request) {
+		this.setName(request.getName());
+		this.setEmail(request.getEmail());
+		this.setAge(request.getAge());
 	}
 
 	public Long getId() {
