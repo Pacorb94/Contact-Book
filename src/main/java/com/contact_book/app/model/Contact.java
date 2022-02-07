@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 
 @Entity
 @Table(name = "contacts")
@@ -19,19 +19,12 @@ public class Contact implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "Name is required")
-	@Size(min = 1, max = 45, message = "Name must be between 1 and 45 characters")
 	@Column(length = 45, nullable = false)
 	private String name;
 	
-	@NotNull(message = "Age is required")
-	@Min(value = 18, message = "Age should not be less than 18") 
 	@Column(length = 3, nullable = false)
 	private int age;
 	
-	@NotBlank(message = "Email is required")
-	@Email(message = "Wrong email")
-	@Size(max = 45, message = "Email should not be greater than 45 characters")
 	@Column(length = 45, unique = true, nullable = false)
 	private String email;
 
@@ -54,7 +47,7 @@ public class Contact implements Serializable {
 	}
 
 	public void setName(String name) {
-		this.name = name.trim();
+		this.name = name;
 	}
 
 	public int getAge() {
@@ -70,7 +63,7 @@ public class Contact implements Serializable {
 	}
 
 	public void setEmail(String email) {
-		this.email = email.trim();
+		this.email = email;
 	}
 
 	public Date getCreatedAt() {
