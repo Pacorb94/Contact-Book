@@ -4,17 +4,17 @@ import javax.validation.constraints.*;
 
 public class ContactRequest {
 	
-	@NotBlank(message = "Name is required")
-	@Size(min = 1, max = 45, message = "Name must be between 1 and 45 characters")
+	@NotBlank(message = "name is required")
+	@Size(min = 1, max = 45, message = "name must be between 1 and 45 characters")
 	private String name;
 
-	@NotNull(message = "Age is required")
-	@Min(value = 18, message = "Age should not be less than 18")
+	@NotNull(message = "age is required")
+	@Min(value = 18, message = "age should not be less than 18")
 	private int age;
 
-	@NotBlank(message = "Email is required")
+	@NotBlank(message = "email is required")
 	@Email(message = "Wrong email")
-	@Size(max = 45, message = "Email should not be greater than 45 characters")
+	@Size(max = 45, message = "email should not be greater than 45 characters")
 	private String email;
 
 	public ContactRequest() {
@@ -22,11 +22,11 @@ public class ContactRequest {
 	}
 
 	public String getName() {
-		return name;
+		return name.trim();
 	}
 
 	public void setName(String name) {
-		this.name = name.trim();
+		this.name = name;
 	}
 
 	public int getAge() {
@@ -38,10 +38,10 @@ public class ContactRequest {
 	}
 
 	public String getEmail() {
-		return email;
+		return email.trim();
 	}
 
 	public void setEmail(String email) {
-		this.email = email.trim();
+		this.email = email;
 	}
 }
