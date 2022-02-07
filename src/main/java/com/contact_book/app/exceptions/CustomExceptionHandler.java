@@ -33,7 +33,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 			ModelNotFoundException ex
 	) {
 		List<String> details = new ArrayList<>();
-		ErrorResponse error = new ErrorResponse("Model not found", details);
+		ErrorResponse error = new ErrorResponse("Contact not found", details);
 		return new ResponseEntity<Object>(error, HttpStatus.NOT_FOUND);
 	}
 	
