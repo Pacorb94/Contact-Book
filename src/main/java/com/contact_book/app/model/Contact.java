@@ -19,7 +19,7 @@ public class Contact implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	@Column(length = 45, nullable = false)
 	private String name;
@@ -46,7 +46,7 @@ public class Contact implements Serializable {
 		this.setAge(request.getAge());
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
