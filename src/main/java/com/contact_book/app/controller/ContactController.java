@@ -38,7 +38,7 @@ public class ContactController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Contact> getContact(@PathVariable Long id) {
+	public ResponseEntity<Contact> getContact(@PathVariable long id) {
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
 			return ResponseEntity.ok(contact);
@@ -49,7 +49,7 @@ public class ContactController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Contact> update(
 			@Valid @RequestBody ContactRequest request, 
-			@PathVariable Long id
+			@PathVariable long id
 	) {
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
@@ -66,7 +66,7 @@ public class ContactController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> delete(@PathVariable Long id) {
+	public ResponseEntity<Object> delete(@PathVariable long id) {
 		Contact contact = this.contactService.getContact(id);
 		if (contact != null) {
 			this.contactService.delete(id);
