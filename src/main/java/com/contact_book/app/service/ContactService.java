@@ -35,7 +35,7 @@ public class ContactService implements ContactServiceInterface {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Contact getContact(Long id) {
+	public Contact getContact(long id) {
 		Optional<Contact> opContact = this.contactRepo.findById(id);
 		if (opContact.isPresent()) {
 			return opContact.get();
@@ -55,7 +55,7 @@ public class ContactService implements ContactServiceInterface {
 
 	@Override
 	@Transactional
-	public void delete(Long id) {
+	public void delete(long id) {
 		this.contactRepo.deleteById(id);
 	}
 }
