@@ -11,9 +11,9 @@ public interface ContactServiceInterface {
 
 	public List<Contact> getAll();
 
-	public Contact getContact(Long id);
+	public Contact getContact(long id);
 
 	public Contact getContactByEmail(String email);
 
-	public void delete(Long id);
+	public void delete(long id);
 }
