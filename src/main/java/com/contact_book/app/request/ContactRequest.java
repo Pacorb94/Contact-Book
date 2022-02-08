@@ -22,7 +22,7 @@ public class ContactRequest {
 	}
 
 	public String getName() {
-		return name.trim();
+		return name;
 	}
 
 	public void setName(String name) {
@@ -38,7 +38,7 @@ public class ContactRequest {
 	}
 
 	public String getEmail() {
-		return email.trim();
+		return email;
 	}
 
 	public void setEmail(String email) {
