@@ -41,7 +41,7 @@ public class Contact implements Serializable {
 	}
 	
 	public void setAllProperties(ContactRequest request) {
-		this.setName(request.getName());
+		this.setName(request.getName().trim());
 		this.setEmail(request.getEmail());
 		this.setAge(request.getAge());
 	}
