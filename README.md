@@ -10,7 +10,7 @@ API la cual es un CRUD de una agenda de contactos
 - MySQL
 
 ## Pasos
-1. Crear una base datos llamada contact-book
+1. Crear una base datos llamada contact_book
 2. Puedes ejecutar la aplicación como una aplicación de Spring o crear el build
 
 ## Licencia
